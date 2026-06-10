@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Portfolio Tracker</title>
+</head>
+<body>
+
+    <h1>📈 Stock Portfolio Tracker</h1>
+
+    <script>
+        // Hardcoded stock prices
+        const stockPrices = {
+            AAPL: 180,
+            TSLA: 250,
+            GOOGL: 140,
+            MSFT: 330
+        };
+
+        let totalInvestment = 0;
+
+        // Ask user how many stocks they want to enter
+        const numberOfStocks = parseInt(prompt("Enter number of stocks:"));
+
+        for (let i = 0; i < numberOfStocks; i++) {
+
+            // Get stock symbol
+            let stockName = prompt("Enter stock symbol:").toUpperCase();
+
+            // Get quantity
+            let quantity = parseInt(prompt("Enter quantity:"));
+
+            // Check if stock exists
+            if (stockPrices[stockName]) {
+
+                let price = stockPrices[stockName];
+                let investment = price * quantity;
+
+                totalInvestment += investment;
+
+                // Display stock details
+                document.write("<h3>Stock: " + stockName + "</h3>");
+                document.write("<p>Quantity: " + quantity + "</p>");
+                document.write("<p>Price per Share: $" + price + "</p>");
+                document.write("<p>Investment Value: $" + investment + "</p>");
+                document.write("<hr>");
+
+            } else {
+                document.write("<p>Stock " + stockName + " not found.</p>");
+            }
+        }
+
+        // Display total investment
+        document.write("<h2>Total Investment Value: $" + totalInvestment + "</h2>");
+    </script>
+
+</body>
+</html>
